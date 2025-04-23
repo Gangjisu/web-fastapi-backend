@@ -2,8 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 
-load_dotenv()
-
 API_KEY = "b3KKuHC2eR9V5hiDfAzG3aHvzWnkHx4T9zKZpFSl"
 BASE_URL = "https://open-api.bser.io"
 
