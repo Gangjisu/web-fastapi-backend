@@ -1,25 +1,27 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from fastapi.responses import JSONResponse
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = b3KKuHC2eR9V5hiDfAzG3aHvzWnkHx4T9zKZpFSl
+BASE_URL = https://open-api.bser.io
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://gangjisu.github.io"],
-    allow_credentials=True,
+    allow_origins=["*"],  # 프로덕션에선 도메인 지정 권장
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class Message(BaseModel):
-    message: str
-
-@app.options("/echo")
-async def options_echo(request: Request):
-    return JSONResponse(status_code=200)
-
-@app.post("/echo")
-def echo_message(msg: Message):
-    return {"response": f"'{msg.message}'를 잘 받았습니다!"}
+@app.get("/user")
+def get_user_info(nickname: str):
+    url = f"{BASE_URL}/v1/user/nickname"
+    headers = {"x-api-key": API_KEY}
+    params = {"query": nickname}
+    resp = requests.get(url, headers=headers, params=params)
+    return resp.json()
