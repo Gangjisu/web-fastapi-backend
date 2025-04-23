@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = b3KKuHC2eR9V5hiDfAzG3aHvzWnkHx4T9zKZpFSl
-BASE_URL = https://open-api.bser.io
+API_KEY = "b3KKuHC2eR9V5hiDfAzG3aHvzWnkHx4T9zKZpFSl"
+BASE_URL = "https://open-api.bser.io"
 
 app = FastAPI()
 
