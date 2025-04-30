@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import json
 import os
 
 BSER_API_KEY  = os.getenv('BSER_API_KEY')
