@@ -26,8 +26,8 @@ def get_user_info(nickname: str):
 
 # [2] Get user rank info
 @app.get("/user/rank")
-def get_user_rank(user_num, season_id, matching_teammode):
-    url = f"{BSER_BASE_URL}/v1/rank/{user_num}/{season_id}/{matching_teammode}" #{team_mode}
+def get_user_rank(user_num, season_id, matching_team_mode):
+    url = f"{BSER_BASE_URL}/v1/rank/{user_num}/{season_id}/{matching_team_mode}" #{team_mode}
     headers = {"x-api-key": BSER_API_KEY}
     resp = requests.get(url, headers=headers) # print("▶ Get User Rank:", resp.status_code)
     return resp.json().get("userRank",{})
@@ -35,8 +35,8 @@ def get_user_rank(user_num, season_id, matching_teammode):
 
 # [3] Get user stats
 @app.get("/user/stats")
-def get_user_stats(user_num, season_id, matchingMode):
-    url = f"{BSER_BASE_URL}/v2/user/stats/{user_num}/{season_id}/{matchingMode}"
+def get_user_stats(user_num, season_id, matching_mode):
+    url = f"{BSER_BASE_URL}/v2/user/stats/{user_num}/{season_id}/{matching_mode}"
     headers = {"x-api-key": BSER_API_KEY}
     resp = requests.get(url, headers=headers) # print("▶ Get User Stats:", resp.status_code)
     return resp.json().get("userStats",{})
