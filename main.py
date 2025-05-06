@@ -68,3 +68,4 @@ def get_user_games(user_num):
     resp = requests.get(url, headers=headers)
     return resp.json().get("userGames",{})
 # [6]
+
